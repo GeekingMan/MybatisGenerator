@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="D:\maven_repo\mysql\mysql-connector-java\5.1.41\mysql-connector-java-5.1.41.jar"/>
+    <context id="my" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost/sc_service" userId="root"
+                        password="root"/>
+        <javaModelGenerator targetPackage="com.geek.sc.entity"
+                            targetProject="D:\IdeaProjects\Geek\SpringCloudService\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="D:\IdeaProjects\Geek\SpringCloudService\src\main\resources\mybatis">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.geek.sc.dao.mapper"
+                             targetProject="D:\IdeaProjects\Geek\SpringCloudService\src\main\java"
+                             type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="event_data_sync" domainObjectName="EventDataSync"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <columnOverride column="event_id" javaType="java.util.UUID" typeHandler="UUIDTypeHandler"/>
+            <columnOverride column="user_id" javaType="java.util.UUID" typeHandler="UUIDTypeHandler"/>
+
+            <columnOverride column="create_time" javaType="java.sql.Timestamp"/>
+            <columnOverride column="update_time" javaType="java.sql.Timestamp"/>
+
+        </table>
+    </context>
+
+</generatorConfiguration>
